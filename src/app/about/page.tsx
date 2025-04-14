@@ -134,10 +134,10 @@ export default function AboutPage() {
             {/* Image for Our Story */}
             <div className="flex justify-center">
               <Image
-                src="https://via.placeholder.com/400x300"
+                src="/assets/videochat.png"
                 alt="Our Story"
                 className="rounded-lg shadow-lg"
-                width={96}
+                width={550}
                 height={50}
               ></Image>
             </div>
@@ -145,10 +145,10 @@ export default function AboutPage() {
             {/* Our Mission */}
             <div className="flex justify-center">
               <Image
-                src="https://via.placeholder.com/400x300"
+                src="/assets/video-interface.png"
                 alt="Our Mission"
                 className="rounded-lg shadow-lg"
-                width={96}
+                width={500}
                 height={50}
               ></Image>
             </div>

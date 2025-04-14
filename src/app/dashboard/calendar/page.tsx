@@ -1,13 +1,23 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { CalendarIcon, ChevronLeft, ChevronRight, Plus, Clock } from "lucide-react"
-import { Calendar } from "@/components/ui/calendar"
-
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  CalendarIcon,
+  ChevronLeft,
+  ChevronRight,
+  Plus,
+  Clock,
+} from "lucide-react";
 export default function CalendarPage() {
-  const [date, setDate] = useState<Date | undefined>(new Date())
+  const [date, setDate] = useState<Date | undefined>(new Date());
 
   // Sample events data
   const events = [
@@ -35,7 +45,7 @@ export default function CalendarPage() {
       date: new Date(2025, 4, 16, 15, 0), // May 16, 2025, 3:00 PM
       duration: "1 hour",
     },
-  ]
+  ];
 
   // Filter events for the selected date
   const selectedDateEvents = events.filter(
@@ -44,7 +54,7 @@ export default function CalendarPage() {
       event.date.getDate() === date.getDate() &&
       event.date.getMonth() === date.getMonth() &&
       event.date.getFullYear() === date.getFullYear(),
-  )
+  );
 
   // Format time from Date object
   const formatTime = (date: Date) => {
@@ -52,14 +62,16 @@ export default function CalendarPage() {
       hour: "2-digit",
       minute: "2-digit",
       hour12: true,
-    })
-  }
+    });
+  };
 
   return (
     <div className="flex flex-col p-6 gap-6">
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-bold">Calendar</h1>
-        <p className="text-muted-foreground">Manage your schedule and upcoming meetings</p>
+        <p className="text-muted-foreground">
+          Manage your schedule and upcoming meetings
+        </p>
       </div>
 
       <div className="flex justify-end">
@@ -75,11 +87,10 @@ export default function CalendarPage() {
         <Card>
           <CardHeader>
             <CardTitle>Calendar</CardTitle>
-            <CardDescription>Select a date to view scheduled meetings</CardDescription>
+            <CardDescription>
+              Select a date to view scheduled meetings
+            </CardDescription>
           </CardHeader>
-          <CardContent>
-            <Calendar mode="single" selected={date} onSelect={setDate} className="rounded-md border" />
-          </CardContent>
         </Card>
 
         <Card>
@@ -96,7 +107,9 @@ export default function CalendarPage() {
                   : "No date selected"}
               </CardTitle>
               <CardDescription>
-                {selectedDateEvents.length} {selectedDateEvents.length === 1 ? "meeting" : "meetings"} scheduled
+                {selectedDateEvents.length}{" "}
+                {selectedDateEvents.length === 1 ? "meeting" : "meetings"}{" "}
+                scheduled
               </CardDescription>
             </div>
             <div className="flex gap-2">
@@ -105,9 +118,9 @@ export default function CalendarPage() {
                 size="icon"
                 onClick={() => {
                   if (date) {
-                    const newDate = new Date(date)
-                    newDate.setDate(newDate.getDate() - 1)
-                    setDate(newDate)
+                    const newDate = new Date(date);
+                    newDate.setDate(newDate.getDate() - 1);
+                    setDate(newDate);
                   }
                 }}
               >
@@ -119,9 +132,9 @@ export default function CalendarPage() {
                 size="icon"
                 onClick={() => {
                   if (date) {
-                    const newDate = new Date(date)
-                    newDate.setDate(newDate.getDate() + 1)
-                    setDate(newDate)
+                    const newDate = new Date(date);
+                    newDate.setDate(newDate.getDate() + 1);
+                    setDate(newDate);
                   }
                 }}
               >
@@ -134,7 +147,10 @@ export default function CalendarPage() {
             {selectedDateEvents.length > 0 ? (
               <div className="space-y-4">
                 {selectedDateEvents.map((event) => (
-                  <div key={event.id} className="flex items-center justify-between p-4 rounded-lg border">
+                  <div
+                    key={event.id}
+                    className="flex items-center justify-between p-4 rounded-lg border"
+                  >
                     <div className="space-y-1">
                       <h3 className="font-medium">{event.title}</h3>
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -152,13 +168,14 @@ export default function CalendarPage() {
               <div className="flex flex-col items-center justify-center h-40 text-center">
                 <CalendarIcon className="h-10 w-10 text-muted-foreground mb-2" />
                 <h3 className="font-medium">No meetings scheduled</h3>
-                <p className="text-sm text-muted-foreground mt-1">Schedule a meeting or select a different date</p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Schedule a meeting or select a different date
+                </p>
               </div>
             )}
           </CardContent>
         </Card>
       </div>
     </div>
-  )
+  );
 }
-

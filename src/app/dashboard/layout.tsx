@@ -22,14 +22,20 @@ export default function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen bg-gray-900 text-white">
+      <div className="flex h-screen w-full bg-gradient-to-br from-gray-900 to-gray-950 text-white overflow-hidden">
         {/* Sidebar */}
         <SidebarComponent />
 
         {/* Main Content */}
-        <div className="flex flex-1 flex-col">
+        <div className="flex-1 flex flex-col w-full overflow-hidden transition-all duration-300 ease-in-out relative">
+          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-5 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 to-transparent pointer-events-none"></div>
+
           <HeaderComponent />
-          <main className="flex-1 p-6">{children}</main>
+
+          <main className="flex-1 w-full overflow-auto relative">
+            <div className="w-full h-full">{children}</div>
+          </main>
         </div>
       </div>
     </SidebarProvider>
